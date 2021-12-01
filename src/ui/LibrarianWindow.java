@@ -23,6 +23,7 @@ public class LibrarianWindow extends Stage implements LibWindow {
 	
 	public static final LibrarianWindow INSTANCE = new LibrarianWindow();
 	
+	
 	private boolean isInitialized = false;
 	
 	public boolean isInitialized() {
@@ -46,6 +47,8 @@ public class LibrarianWindow extends Stage implements LibWindow {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
+        
+        this.setTitle("Librarian");
 
         Text scenetitle = new Text("Checkout Book");
         scenetitle.setFont(Font.font("Harlow Solid Italic", FontWeight.NORMAL, 20)); //Tahoma

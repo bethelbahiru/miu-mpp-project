@@ -48,7 +48,7 @@ public class LoginWindow extends Stage implements LibWindow {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
         
-       
+        this.setTitle("Login");
 
         Text scenetitle = new Text("Login");
         scenetitle.setFont(Font.font("Harlow Solid Italic", FontWeight.NORMAL, 20)); //Tahoma
@@ -106,6 +106,18 @@ public class LoginWindow extends Stage implements LibWindow {
              	    }
              	    LibrarianWindow.INSTANCE.clear();
              	    LibrarianWindow.INSTANCE.show();
+				} else if (currentAuth == Auth.ADMIN) {
+					 if(!AdminWindow.INSTANCE.isInitialized()) {
+	             	    	AdminWindow.INSTANCE.init();
+	             	    }
+	             	    AdminWindow.INSTANCE.clear();
+	             	    AdminWindow.INSTANCE.show();
+				} else if (currentAuth == Auth.BOTH){
+					if(!BothWindow.INSTANCE.isInitialized()) {
+             	    	BothWindow.INSTANCE.init();
+             	    }
+             	    BothWindow.INSTANCE.clear();
+             	    BothWindow.INSTANCE.show();	
 				}
 				
 			}
