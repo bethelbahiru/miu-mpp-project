@@ -46,6 +46,7 @@ public class Start extends Application {
 		AdminWindow.INSTANCE,
 		BothWindow.INSTANCE,
 		AddMemberWindow.INSTANCE,
+		EditMemberWindow.INSTANCE,
 	};
 	
 	public static void hideAllWindows() {

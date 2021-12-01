@@ -73,7 +73,7 @@ public class AdminWindow extends Stage implements LibWindow {
         hbBtn3.getChildren().add(adminBtn3);
         grid.add(hbBtn3, 1, 3);
         
-        
+        // Add Member Button Implementation
         adminBtn2.setOnAction(new EventHandler<ActionEvent>() {
         	@Override
         	public void handle(ActionEvent e) {
@@ -83,6 +83,19 @@ public class AdminWindow extends Stage implements LibWindow {
          	    }
         		AddMemberWindow.INSTANCE.clear();
         		AddMemberWindow.INSTANCE.show();
+        	}
+        });
+        
+        // Edit Member Implementation
+        adminBtn3.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!EditMemberWindow.INSTANCE.isInitialized()) {
+        			EditMemberWindow.INSTANCE.init();
+         	    }
+        		EditMemberWindow.INSTANCE.clear();
+        		EditMemberWindow.INSTANCE.show();
         	}
         });
         
