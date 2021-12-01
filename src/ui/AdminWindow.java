@@ -73,6 +73,19 @@ public class AdminWindow extends Stage implements LibWindow {
         hbBtn3.getChildren().add(adminBtn3);
         grid.add(hbBtn3, 1, 3);
         
+        
+        adminBtn2.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!AddMemberWindow.INSTANCE.isInitialized()) {
+        			AddMemberWindow.INSTANCE.init();
+         	    }
+        		AddMemberWindow.INSTANCE.clear();
+        		AddMemberWindow.INSTANCE.show();
+        	}
+        });
+        
 
         Scene scene = new Scene(grid, 420, 375);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
