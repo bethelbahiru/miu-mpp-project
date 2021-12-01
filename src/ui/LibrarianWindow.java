@@ -50,7 +50,7 @@ public class LibrarianWindow extends Stage implements LibWindow {
         
         this.setTitle("Librarian");
 
-        Text scenetitle = new Text("Checkout Book");
+        Text scenetitle = new Text("Librarian Dashboard");
         scenetitle.setFont(Font.font("Harlow Solid Italic", FontWeight.NORMAL, 20)); //Tahoma
         grid.add(scenetitle, 0, 0, 2, 1);
 
@@ -58,7 +58,20 @@ public class LibrarianWindow extends Stage implements LibWindow {
         HBox hbBtn = new HBox(10);
         hbBtn.setAlignment(Pos.BASELINE_CENTER);
         hbBtn.getChildren().add(librarianBtn);
-        grid.add(hbBtn, 1, 4);
+        grid.add(hbBtn, 1, 1);
+        
+        Button librarianBtn2 = new Button("Checkout Information");
+        HBox hbBtn2 = new HBox(10);
+        hbBtn2.setAlignment(Pos.BASELINE_CENTER);
+        hbBtn2.getChildren().add(librarianBtn2);
+        grid.add(hbBtn2, 1, 2);
+        
+        Button librarianBtn3 = new Button("Over Due");
+        HBox hbBtn3 = new HBox(10);
+        hbBtn3.setAlignment(Pos.BASELINE_CENTER);
+        hbBtn3.getChildren().add(librarianBtn3);
+        grid.add(hbBtn3, 1, 3);
+
 
         Scene scene = new Scene(grid, 420, 375);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());

@@ -49,7 +49,7 @@ public class BothWindow extends Stage implements LibWindow {
         
         this.setTitle("Administration and Librarian");
 
-        Text scenetitle = new Text("Admin and Lib");
+        Text scenetitle = new Text("Admin and Librarian Dashboard");
         scenetitle.setFont(Font.font("Harlow Solid Italic", FontWeight.NORMAL, 20)); //Tahoma
         grid.add(scenetitle, 0, 0, 2, 1);
 
@@ -57,19 +57,21 @@ public class BothWindow extends Stage implements LibWindow {
         HBox hbBtn = new HBox(10);
         hbBtn.setAlignment(Pos.BASELINE_CENTER);
         hbBtn.getChildren().add(adminBtn1);
-        grid.add(hbBtn, 1, 4);
+        grid.add(hbBtn, 1, 1);
         
         Button adminBtn2 = new Button("Add Member");
         HBox hbBtn2 = new HBox(10);
         hbBtn2.setAlignment(Pos.BASELINE_CENTER);
         hbBtn2.getChildren().add(adminBtn2);
-        grid.add(hbBtn2, 1, 4);
+        grid.add(hbBtn2, 1, 2);
         
         Button adminBtn3 = new Button("Edit Member");
         HBox hbBtn3 = new HBox(10);
         hbBtn3.setAlignment(Pos.BASELINE_CENTER);
         hbBtn3.getChildren().add(adminBtn3);
-        grid.add(hbBtn3, 1, 4);
+        grid.add(hbBtn3, 1, 3);
+        
+ 
 
         Scene scene = new Scene(grid, 420, 375);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
