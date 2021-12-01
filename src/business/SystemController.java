@@ -43,6 +43,13 @@ public class SystemController implements ControllerInterface {
 		retval.addAll(da.readBooksMap().keySet());
 		return retval;
 	}
+	@Override
+	public void addMember(String id, String firstName, String lastName, String tele, Address add) {
+		// TODO Auto-generated method stub
+		LibraryMember newMember = new LibraryMember(id, firstName, lastName, tele, add);
+		DataAccess da = new DataAccessFacade();
+		da.saveNewMember(newMember);
+	}
 	
 	
 }
