@@ -1,7 +1,7 @@
 package ui;
 
 import business.ControllerInterface;
-import business.LoginException;
+import business.CustomException;
 import business.SystemController;
 import dataaccess.Auth;
 import javafx.event.ActionEvent;
@@ -90,7 +90,7 @@ public class LoginWindow extends Stage implements LibWindow {
              	    messageBar.setText("Login successful");
              	    updateWindow(SystemController.currentAuth); // Update Current Login Page
 
-        		} catch(LoginException ex) {
+        		} catch(CustomException ex) {
         			messageBar.setFill(Start.Colors.red);
         			messageBar.setText("Error! " + ex.getMessage());
         		}

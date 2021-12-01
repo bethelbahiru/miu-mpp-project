@@ -1,7 +1,7 @@
 package ui;
 
 import business.ControllerInterface;
-import business.LoginException;
+import business.CustomException;
 import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

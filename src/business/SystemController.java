@@ -12,18 +12,18 @@ import dataaccess.User;
 public class SystemController implements ControllerInterface {
 	public static Auth currentAuth = null;
 	
-	public void login(String id, String password) throws LoginException {
+	public void login(String id, String password) throws CustomException {
 		DataAccess da = new DataAccessFacade();
 		HashMap<String, User> map = da.readUserMap();
 		if(id.equals("") && password.equals("")) {
-			throw new LoginException("Id and Password incorrect");
+			throw new CustomException("Id and Password Empty");
 		}
 		if(!map.containsKey(id)) {
-			throw new LoginException("ID " + id + " not found");
+			throw new CustomException("ID " + id + " not found");
 		}
 		String passwordFound = map.get(id).getPassword();
 		if(!passwordFound.equals(password)) {
-			throw new LoginException("Password incorrect");
+			throw new CustomException("Password incorrect");
 		}
 		currentAuth = map.get(id).getAuthorization();
 		
@@ -44,12 +44,37 @@ public class SystemController implements ControllerInterface {
 		return retval;
 	}
 	@Override
-	public void addMember(String id, String firstName, String lastName, String tele, Address add) {
+	public void addMember(String id, String firstName, String lastName, String tele, Address address) throws CustomException {
 		// TODO Auto-generated method stub
-		LibraryMember newMember = new LibraryMember(id, firstName, lastName, tele, add);
+		LibraryMember newMember = new LibraryMember(id, firstName, lastName, tele, address);
+		List<String> memberIds = allMemberIds();
+		
+		if(id.equals("") || 
+				firstName.equals("") || 
+				lastName.equals("") || 
+				tele.equals("") || 
+				address.getState().equals("") ||
+				address.getStreet().equals("") || 
+				address.getCity().equals("") ||
+				address.getZip().equals("")) {
+			
+			throw new CustomException("One or more fields are empty.");
+		}
+		
+		if (memberIds.contains(id)) {
+			throw new CustomException("Member already exists. Please use new ID");
+		}
+		
 		DataAccess da = new DataAccessFacade();
 		da.saveNewMember(newMember);
 	}
 	
+	@Override
+	public List<LibraryMember> getAllMembers() {
+		DataAccess da = new DataAccessFacade();
+		HashMap<String, LibraryMember> membersHashMap = da.readMemberMap();
+		List<LibraryMember> allMembers = new ArrayList<LibraryMember>(membersHashMap.values());
+		return allMembers;
+	}
 	
 }
