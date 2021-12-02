@@ -32,6 +32,21 @@ public class DataAccessFacade implements DataAccess {
 		mems.put(memberId, member);
 		saveToStorage(StorageType.MEMBERS, mems);	
 	}
+
+	//TODO :- use this instead of save for later
+	public void updateMember(LibraryMember member) {
+		HashMap<String, LibraryMember> mems = readMemberMap();
+		String memberId = member.getMemberId();
+		mems.replace(memberId, member);
+		saveToStorage(StorageType.MEMBERS, mems);	
+	}
+	
+	public void removeMember(LibraryMember member) {
+		HashMap<String, LibraryMember> mems = readMemberMap();
+		String memberId = member.getMemberId();
+		mems.remove(memberId);
+		saveToStorage(StorageType.MEMBERS, mems);
+	}
 	
 	@SuppressWarnings("unchecked")
 	public  HashMap<String,Book> readBooksMap() {

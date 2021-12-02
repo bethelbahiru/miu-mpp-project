@@ -158,11 +158,6 @@ public class AddMemberWindow extends Stage implements LibWindow {
         	}
         });
         
-        
-        
-        //TODO :- check this out first without it.
-        grid.setGridLinesVisible(false) ;
-
         Scene scene = new Scene(grid, 420, 375);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
         setScene(scene);

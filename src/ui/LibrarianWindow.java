@@ -10,10 +10,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -49,7 +52,7 @@ public class LibrarianWindow extends Stage implements LibWindow {
         grid.setPadding(new Insets(25, 25, 25, 25));
         
         this.setTitle("Librarian");
-
+        
         Text scenetitle = new Text("Librarian Dashboard");
         scenetitle.setFont(Font.font("Harlow Solid Italic", FontWeight.NORMAL, 20)); //Tahoma
         grid.add(scenetitle, 0, 0, 2, 1);
@@ -71,7 +74,24 @@ public class LibrarianWindow extends Stage implements LibWindow {
         hbBtn3.setAlignment(Pos.BASELINE_CENTER);
         hbBtn3.getChildren().add(librarianBtn3);
         grid.add(hbBtn3, 1, 3);
-
+        
+        Button backBtn = new Button("Back To Login");
+        HBox hbBtnBack = new HBox(10);
+        hbBtnBack.setAlignment(Pos.BASELINE_CENTER);
+        hbBtnBack.getChildren().add(backBtn);
+        grid.add(hbBtnBack , 1, 4);
+        
+        backBtn.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!LoginWindow.INSTANCE.isInitialized()) {
+        			LoginWindow.INSTANCE.init();
+         	    }
+        		LoginWindow.INSTANCE.clear();
+        		LoginWindow.INSTANCE.show();	
+        	}
+        });
 
         Scene scene = new Scene(grid, 420, 375);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());

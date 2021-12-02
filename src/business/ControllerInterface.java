@@ -14,4 +14,8 @@ public interface ControllerInterface {
 	
 	public List<LibraryMember> getAllMembers();
 	
+	public void updateMember(LibraryMember lm);
+	
+	public void removeMember(LibraryMember lm);
+	
 }

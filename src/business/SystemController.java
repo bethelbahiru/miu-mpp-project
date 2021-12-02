@@ -77,4 +77,19 @@ public class SystemController implements ControllerInterface {
 		return allMembers;
 	}
 	
+	//TODO :- Refactor.
+	@Override
+	public void updateMember(LibraryMember lm) {
+		DataAccess da = new DataAccessFacade();
+		da.saveNewMember(lm);
+	}
+	
+	@Override
+	public void removeMember(LibraryMember lm) {
+		DataAccess da = new DataAccessFacade();
+		da.removeMember(lm);
+	}
+
+	
+	
 }

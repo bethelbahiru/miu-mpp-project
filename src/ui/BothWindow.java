@@ -71,6 +71,24 @@ public class BothWindow extends Stage implements LibWindow {
         hbBtn3.getChildren().add(adminBtn3);
         grid.add(hbBtn3, 1, 3);
         
+        Button backBtn = new Button("Back To Login");
+        HBox hbBtnBack = new HBox(10);
+        hbBtnBack.setAlignment(Pos.BASELINE_CENTER);
+        hbBtnBack.getChildren().add(backBtn);
+        grid.add(hbBtnBack , 1, 4);
+        
+        backBtn.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!LoginWindow.INSTANCE.isInitialized()) {
+        			LoginWindow.INSTANCE.init();
+         	    }
+        		LoginWindow.INSTANCE.clear();
+        		LoginWindow.INSTANCE.show();	
+        	}
+        });
+        
  
 
         Scene scene = new Scene(grid, 420, 375);
