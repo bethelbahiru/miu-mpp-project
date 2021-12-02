@@ -72,20 +72,23 @@ public class AddBookWindow extends Stage implements LibWindow {
         grid.add(bookISBN, 0, 1);
         
         TextField bookISBNTextField = new TextField();
-        grid.add(bookISBNTextField, 1, 1);
+        bookISBNTextField.setPromptText("ISBN");
+        grid.add(bookISBNTextField, 1, 1,7,1);
         
         Label title = new Label("Title: ");
         grid.add(title, 0, 2);
 
         TextField titleField = new TextField();
-        grid.add(titleField, 1, 2);
+        titleField.setPromptText("Title");
+        grid.add(titleField, 1, 2,7,1);
         
         Label lName = new Label("Checkout Days: ");
         grid.add(lName, 0, 3);
        
         ComboBox comboBox = new ComboBox();
-        comboBox.getItems().add("Choice 1");
-        comboBox.getItems().add("Choice 2");
+        comboBox.getItems().add("7");
+        comboBox.getItems().add("21");
+        comboBox.setValue("7");
         HBox hbox = new HBox(comboBox);
         grid.add(hbox, 1, 3);
         
@@ -107,7 +110,7 @@ public class AddBookWindow extends Stage implements LibWindow {
         HBox bookHbBtn = new HBox(10);
         bookHbBtn.setAlignment(Pos.BASELINE_RIGHT);
         bookHbBtn.getChildren().add(addBook);
-        grid.add(bookHbBtn, 1, 6);
+        grid.add(bookHbBtn, 1, 6,7,1);
         
         
         TableView tableView = new TableView();
@@ -129,7 +132,7 @@ public class AddBookWindow extends Stage implements LibWindow {
         
         VBox vbox = new VBox(tableView);
         vbox.setAlignment(Pos.CENTER);
-        grid.add(vbox, 0, 7, 7, 2);
+        grid.add(vbox, 0, 7, 8, 2);
         
 
         addAuthor.setOnAction(new EventHandler<ActionEvent>() {

@@ -63,24 +63,28 @@ public class AddMemberWindow extends Stage implements LibWindow {
         grid.add(memberId, 0, 1);
         
         TextField memberIdTextField = new TextField();
+        memberIdTextField.setPromptText("Member ID");
         grid.add(memberIdTextField, 1, 1);
         
         Label fName = new Label("First Name:");
         grid.add(fName, 0, 2);
 
         TextField fnTextField = new TextField();
+        fnTextField.setPromptText("First Name");
         grid.add(fnTextField, 1, 2);
         
         Label lName = new Label("Last Name:");
         grid.add(lName, 0, 3);
         
         TextField lnTextField = new TextField();
+        lnTextField.setPromptText("Last Name");
         grid.add(lnTextField, 1, 3);
         
         Label street = new Label("Street:");
         grid.add(street, 0, 4);
 
         TextField streetTextField = new TextField();
+        streetTextField.setPromptText("Street");
         grid.add(streetTextField, 1, 4);
         
         
@@ -88,24 +92,28 @@ public class AddMemberWindow extends Stage implements LibWindow {
         grid.add(city, 0, 5);
         
         TextField cityTextField = new TextField();
+        cityTextField.setPromptText("City");
         grid.add(cityTextField, 1, 5);
         
         Label state = new Label("State:");
         grid.add(state, 0, 6);
 
         TextField stateTextField = new TextField();
+        stateTextField.setPromptText("State");
         grid.add(stateTextField, 1, 6);
         
         Label zip = new Label("Zip:");
         grid.add(zip, 0, 7);
         
         TextField zipTextField = new TextField();
+        zipTextField.setPromptText("Zip");
         grid.add(zipTextField, 1, 7);
         
         Label phone = new Label("Phone Number:");
         grid.add(phone, 0, 8);
 
         TextField phoneTextField = new TextField();
+        phoneTextField.setPromptText("Phone Number");
         grid.add(phoneTextField, 1, 8);
         
         Button addMember = new Button("Add Member");
