@@ -46,8 +46,13 @@ public class Start extends Application {
 		AdminWindow.INSTANCE,
 		BothWindow.INSTANCE,
 		AddMemberWindow.INSTANCE,
-		EditMemberWindow.INSTANCE,
-		AddBookWindow.INSTANCE
+		ListMemberWindow.INSTANCE,
+		AddBookWindow.INSTANCE,
+		AddAuthorWindow.INSTANCE,
+		CheckOutWindow.INSTANCE,
+		AddBookCopyWindow.INSTANCE,
+		CheckOutInfoWindow.INSTANCE,
+		OverDueWindow.INSTANCE
 	};
 	
 	public static void hideAllWindows() {
@@ -66,7 +71,7 @@ public class Start extends Application {
 		topContainer.setId("top-container");
 		MenuBar mainMenu = new MenuBar();
 		VBox imageHolder = new VBox();
-		Image image = new Image("ui/library.jpg", 400, 300, false, false);
+		Image image = new Image("ui/library.jpg", 600, 500, false, false);
 
         // simply displays in ImageView the image as is
         ImageView iv = new ImageView();
@@ -142,7 +147,7 @@ public class Start extends Application {
 		optionsMenu.getItems().addAll(login, bookIds, memberIds);
 
 		mainMenu.getMenus().addAll(optionsMenu);
-		Scene scene = new Scene(topContainer, 420, 375);
+		Scene scene = new Scene(topContainer, 620, 575);
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
 		primaryStage.show();

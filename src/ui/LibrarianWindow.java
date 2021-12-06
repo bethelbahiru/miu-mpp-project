@@ -92,8 +92,43 @@ public class LibrarianWindow extends Stage implements LibWindow {
         		LoginWindow.INSTANCE.show();	
         	}
         });
-
-        Scene scene = new Scene(grid, 420, 375);
+        
+        librarianBtn.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!CheckOutWindow.INSTANCE.isInitialized()) {
+        			CheckOutWindow.INSTANCE.init();
+         	    }
+        		CheckOutWindow.INSTANCE.clear();
+        		CheckOutWindow.INSTANCE.show();	
+        	}
+        });
+        
+        librarianBtn2.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!CheckOutInfoWindow.INSTANCE.isInitialized()) {
+        			CheckOutInfoWindow.INSTANCE.init();
+         	    }
+        		CheckOutInfoWindow.INSTANCE.clear();
+        		CheckOutInfoWindow.INSTANCE.show();	
+        	}
+        });
+        
+        librarianBtn3.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!OverDueWindow.INSTANCE.isInitialized()) {
+        			OverDueWindow.INSTANCE.init();
+         	    }
+        		OverDueWindow.INSTANCE.clear();
+        		OverDueWindow.INSTANCE.show();	
+        	}
+        });
+        Scene scene = new Scene(grid, 620, 575);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
         setScene(scene);
         

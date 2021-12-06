@@ -35,7 +35,15 @@ final public class Book implements Serializable {
 			}
 		}
 	}
-
+	
+	public int availableCopiesCount() {
+		int count = 0;
+		for(BookCopy c: copies) {
+			count = c.isAvailable() ? count++ : 0;
+		}	
+		return count;
+	}
+	
 	public List<Integer> getCopyNums() {
 		List<Integer> retVal = new ArrayList<>();
 		for(BookCopy c : copies) {
@@ -51,6 +59,12 @@ final public class Book implements Serializable {
 		newArr[copies.length] = new BookCopy(this, copies.length +1, true);
 		copies = newArr;
 	}
+	
+	public void addCopy(int num) {
+		for (int i = 0; i < num; i++) {
+			addCopy();
+		}
+	} 
 	
 	
 	@Override
@@ -70,6 +84,32 @@ final public class Book implements Serializable {
 				     .map(l -> l.isAvailable())
 				     .reduce(false, (x,y) -> x || y);
 	}
+	
+	
+	public boolean isAvailable2() {
+		 //check this line?
+		for(BookCopy c : copies) {
+			if(c.isAvailable()) {
+				return true;
+			}
+		}
+		
+		return false;
+		}
+	
+	
+	public int isAvailableCount() {
+		int count = 0;
+		if(true){ //check this line?
+			for(BookCopy c : copies) {
+				if(c.isAvailable()) {
+					count++;
+				}
+				}
+			}
+		return count;
+		}
+	
 	@Override
 	public String toString() {
 		return "isbn: " + isbn + ", maxLength: " + maxCheckoutLength + ", available: " + isAvailable();

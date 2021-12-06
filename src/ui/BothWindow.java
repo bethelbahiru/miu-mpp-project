@@ -71,11 +71,37 @@ public class BothWindow extends Stage implements LibWindow {
         hbBtn3.getChildren().add(adminBtn3);
         grid.add(hbBtn3, 1, 3);
         
+        Button adminBtn4 = new Button("Checkout Book");
+        HBox hbBtn4 = new HBox(10);
+        hbBtn4.setAlignment(Pos.BASELINE_CENTER);
+        hbBtn4.getChildren().add(adminBtn4);
+        grid.add(hbBtn4, 1, 4);
+        
+        Button adminBtn5 = new Button("Add Book Copy");
+        HBox hbBtn5 = new HBox(10);
+        hbBtn5.setAlignment(Pos.BASELINE_CENTER);
+        hbBtn5.getChildren().add(adminBtn5);
+        grid.add(hbBtn5, 1, 5);
+        
+        Button adminBtn6 = new Button("Checkout Information");
+        HBox hbBtn6 = new HBox(10);
+        hbBtn6.setAlignment(Pos.BASELINE_CENTER);
+        hbBtn6.getChildren().add(adminBtn6);
+        grid.add(hbBtn6, 1, 6);
+        
+        Button adminBtn7 = new Button("Over Due");
+        HBox hbBtn7 = new HBox(10);
+        hbBtn7.setAlignment(Pos.BASELINE_CENTER);
+        hbBtn7.getChildren().add(adminBtn7);
+        grid.add(hbBtn7, 1, 7);
+        
         Button backBtn = new Button("Back To Login");
         HBox hbBtnBack = new HBox(10);
         hbBtnBack.setAlignment(Pos.BASELINE_CENTER);
         hbBtnBack.getChildren().add(backBtn);
-        grid.add(hbBtnBack , 1, 4);
+        grid.add(hbBtnBack , 1, 8);
+        
+         
         
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
         	@Override
@@ -89,9 +115,100 @@ public class BothWindow extends Stage implements LibWindow {
         	}
         });
         
+     // Add Book Implementation
+        adminBtn1.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!AddBookWindow.INSTANCE.isInitialized()) {
+        			AddBookWindow.INSTANCE.init();
+         	    }
+        		AddBookWindow.INSTANCE.clear();
+        		AddBookWindow.INSTANCE.show();
+        	}
+        });
+        
+        // Add Member Button Implementation
+        adminBtn2.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!AddMemberWindow.INSTANCE.isInitialized()) {
+        			AddMemberWindow.INSTANCE.init();
+         	    }
+        		AddMemberWindow.INSTANCE.clear();
+        		AddMemberWindow.INSTANCE.show();
+        	}
+        });
+        
+        // Edit Member Implementation
+        adminBtn3.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!ListMemberWindow.INSTANCE.isInitialized()) {
+        			ListMemberWindow.INSTANCE.init();
+         	    }
+        		ListMemberWindow.INSTANCE.clear();
+        		ListMemberWindow.INSTANCE.show();
+        	}
+        });
+        
+        adminBtn4.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!CheckOutWindow.INSTANCE.isInitialized()) {
+        			CheckOutWindow.INSTANCE.init();
+         	    }
+        		CheckOutWindow.INSTANCE.clear();
+        		CheckOutWindow.INSTANCE.show();	
+        	}
+        });
+        
+        // Add Member Button Implementation
+        adminBtn5.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!AddBookCopyWindow.INSTANCE.isInitialized()) {
+        			AddBookCopyWindow.INSTANCE.init();
+         	    }
+        		AddBookCopyWindow.INSTANCE.clear();
+        		AddBookCopyWindow.INSTANCE.show();
+        	}
+        });
+        
+        // Edit Member Implementation
+        adminBtn6.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!CheckOutInfoWindow.INSTANCE.isInitialized()) {
+        			CheckOutInfoWindow.INSTANCE.init();
+         	    }
+        		CheckOutInfoWindow.INSTANCE.clear();
+        		CheckOutInfoWindow.INSTANCE.show();	
+        	}
+        });
+        
+     // Edit Member Implementation
+        adminBtn7.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!OverDueWindow.INSTANCE.isInitialized()) {
+        			OverDueWindow.INSTANCE.init();
+         	    }
+        		OverDueWindow.INSTANCE.clear();
+        		OverDueWindow.INSTANCE.show();	
+        	}
+        });
+        
+        
  
 
-        Scene scene = new Scene(grid, 420, 375);
+        Scene scene = new Scene(grid, 620, 575);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
         setScene(scene);
         

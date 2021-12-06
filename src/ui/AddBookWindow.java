@@ -1,14 +1,18 @@
 package ui;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import business.Address;
+import business.Author;
 import business.Book;
 import business.ControllerInterface;
 import business.CustomException;
 import business.LibraryMember;
 import business.SystemController;
 import dataaccess.Auth;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -107,15 +111,95 @@ public class AddBookWindow extends Stage implements LibWindow {
         grid.add(messageBox, 1, 5);
         
         Button addBook = new Button("Add Book");
+        Button closeAddBook = new Button("Close");
+        Button deleteBook = new Button("Delete All");
         HBox bookHbBtn = new HBox(10);
         bookHbBtn.setAlignment(Pos.BASELINE_RIGHT);
-        bookHbBtn.getChildren().add(addBook);
+        bookHbBtn.getChildren().addAll(closeAddBook, addBook, deleteBook);
         grid.add(bookHbBtn, 1, 6,7,1);
         
         
         TableView tableView = new TableView();
+        ControllerInterface c = new SystemController();
     	tableView.setEditable(true);
 
+        addBook.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		System.out.println("Added.");
+        		ControllerInterface c = new SystemController();
+
+    			try {
+					c.addBook(bookISBNTextField.getText().trim(), 
+							titleField.getText().trim(),
+							Integer.parseInt(comboBox.getSelectionModel().getSelectedItem().toString()),
+							AddAuthorWindow.authors);
+					
+					createTable(tableView);
+					bookISBNTextField.clear();
+					titleField.clear();
+				} catch (CustomException ex) {
+					messageBar.setFill(Start.Colors.red);
+        			messageBar.setText("Error! " + ex.getMessage());
+        			
+				}	     	   
+        	}
+        });
+        
+        deleteBook.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		System.out.println("Added.");
+        		ControllerInterface c = new SystemController();
+
+    			try {
+					c.deleteBooks();
+					
+					createTable(tableView);
+					bookISBNTextField.clear();
+					titleField.clear();
+				} catch (CustomException ex) {
+					messageBar.setFill(Start.Colors.red);
+        			messageBar.setText("Error! " + ex.getMessage());
+        			
+				}	     	   
+        	}
+        });
+        
+        addAuthor.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		// Start.hideAllWindows();
+        		if(!AddAuthorWindow.INSTANCE.isInitialized()) {
+        			AddAuthorWindow.INSTANCE.init();
+         	    }
+        		AddAuthorWindow.INSTANCE.clear();
+        		AddAuthorWindow.INSTANCE.show();     	   
+        	}
+        });
+        
+        closeAddBook.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		 Start.hideAllWindows();
+        		 if (SystemController.currentAuth == Auth.ADMIN) {
+ 					 if(!AdminWindow.INSTANCE.isInitialized()) {
+ 	             	    	AdminWindow.INSTANCE.init();
+ 	             	    }
+ 	             	    AdminWindow.INSTANCE.clear();
+ 	             	    AdminWindow.INSTANCE.show();
+ 				} else if (SystemController.currentAuth == Auth.BOTH){
+ 					if(!BothWindow.INSTANCE.isInitialized()) {
+              	    	BothWindow.INSTANCE.init();
+              	    }
+              	    BothWindow.INSTANCE.clear();
+              	    BothWindow.INSTANCE.show();	
+ 				}    	   
+        	}
+        });
+        
+        ///////////////////////////////////////////////////////////
+        
         TableColumn<Book, String> bookISBNCol = new TableColumn<>("ISBN");
         bookISBNCol.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         
@@ -125,28 +209,29 @@ public class AddBookWindow extends Stage implements LibWindow {
         TableColumn<Book, String> checkoutCol = new TableColumn<>("Max CheckOut");
         checkoutCol.setCellValueFactory(new PropertyValueFactory<>("maxCheckoutLength"));
         
-        
+ 
         tableView.getColumns().add(bookISBNCol);
         tableView.getColumns().add(titleCol);
         tableView.getColumns().add(checkoutCol);
         
+        createTable(tableView);
+        
         VBox vbox = new VBox(tableView);
         vbox.setAlignment(Pos.CENTER);
-        grid.add(vbox, 0, 7, 8, 2);
+        grid.add(vbox, 0, 7, 16, 2);
         
-
-        addAuthor.setOnAction(new EventHandler<ActionEvent>() {
-        	@Override
-        	public void handle(ActionEvent e) {
-        		
-        	}
-     
-        });
         
-        Scene scene = new Scene(grid, 420, 375);
+        Scene scene = new Scene(grid, 620, 575);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
         setScene(scene);
         
     }
+    
+	private void createTable(TableView tableView) {	
+		ControllerInterface c = new SystemController();  
+        List<Book> lbs = c.getAllBooks(); 
+        tableView.setItems(FXCollections.observableArrayList(lbs));
+		
+	}
 }
 

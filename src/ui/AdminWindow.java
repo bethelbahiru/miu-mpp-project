@@ -73,11 +73,17 @@ public class AdminWindow extends Stage implements LibWindow {
         hbBtn3.getChildren().add(adminBtn3);
         grid.add(hbBtn3, 1, 3);
         
+        Button adminBtn4 = new Button("Add Book Copy");
+        HBox hbBtn4 = new HBox(10);
+        hbBtn4.setAlignment(Pos.BASELINE_CENTER);
+        hbBtn4.getChildren().add(adminBtn4);
+        grid.add(hbBtn4, 1, 4);
+        
         Button backBtn = new Button("Back To Login");
         HBox hbBtnBack = new HBox(10);
         hbBtnBack.setAlignment(Pos.BASELINE_CENTER);
         hbBtnBack.getChildren().add(backBtn);
-        grid.add(hbBtnBack , 1, 4);
+        grid.add(hbBtnBack , 1, 5);
         
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
         	@Override
@@ -122,16 +128,29 @@ public class AdminWindow extends Stage implements LibWindow {
         	@Override
         	public void handle(ActionEvent e) {
         		Start.hideAllWindows();
-        		if(!EditMemberWindow.INSTANCE.isInitialized()) {
-        			EditMemberWindow.INSTANCE.init();
+        		if(!ListMemberWindow.INSTANCE.isInitialized()) {
+        			ListMemberWindow.INSTANCE.init();
          	    }
-        		EditMemberWindow.INSTANCE.clear();
-        		EditMemberWindow.INSTANCE.show();
+        		ListMemberWindow.INSTANCE.clear();
+        		ListMemberWindow.INSTANCE.show();
+        	}
+        });
+        
+        
+        adminBtn4.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent e) {
+        		Start.hideAllWindows();
+        		if(!AddBookCopyWindow.INSTANCE.isInitialized()) {
+        			AddBookCopyWindow.INSTANCE.init();
+         	    }
+        		AddBookCopyWindow.INSTANCE.clear();
+        		AddBookCopyWindow.INSTANCE.show();
         	}
         });
         
 
-        Scene scene = new Scene(grid, 420, 375);
+        Scene scene = new Scene(grid, 620, 575);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
         setScene(scene);
         

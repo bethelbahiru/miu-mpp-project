@@ -35,9 +35,14 @@ final public class BookCopy implements Serializable {
 		return book;
 	}
 	
+	public void checkoutCopy() {
+		isAvailable = false;
+	}
 	public void changeAvailability() {
 		isAvailable = !isAvailable;
 	}
+	
+	
 	
 	@Override
 	public boolean equals(Object ob) {
